@@ -1,13 +1,14 @@
-package com.bulich.misha.workwithroom
+package com.bulich.misha.workwithroom.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.bulich.misha.workwithroom.R
 import com.bulich.misha.workwithroom.databinding.ActivityMainBinding
-import com.bulich.misha.workwithroom.tabs.CatalogClothes
-import com.bulich.misha.workwithroom.tabs.Panel
-import com.bulich.misha.workwithroom.tabs.categories.CatalogCategories
-import com.bulich.misha.workwithroom.tabs.products.CatalogProducts
+import com.bulich.misha.workwithroom.presentation.tabs.CatalogClothes
+import com.bulich.misha.workwithroom.presentation.tabs.Panel
+import com.bulich.misha.workwithroom.presentation.tabs.categories.CatalogCategories
+import com.bulich.misha.workwithroom.presentation.tabs.products.CatalogProducts
 
 class MainActivity : AppCompatActivity() {
 

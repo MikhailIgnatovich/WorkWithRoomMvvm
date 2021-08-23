@@ -1,6 +1,8 @@
-package com.bulich.misha.workwithroom.db
+package com.bulich.misha.workwithroom.data.repository
 
 import androidx.lifecycle.LiveData
+import com.bulich.misha.workwithroom.data.db.ProductsDao
+import com.bulich.misha.workwithroom.data.models.Products
 
 class ProductsRepository(private val productsDao: ProductsDao) {
 

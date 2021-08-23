@@ -1,4 +1,7 @@
-package com.bulich.misha.workwithroom.db
+package com.bulich.misha.workwithroom.data.repository
+
+import com.bulich.misha.workwithroom.data.db.CategoriesDao
+import com.bulich.misha.workwithroom.data.models.Categories
 
 class CategoriesRepository(private val categoriesDao: CategoriesDao) {
 

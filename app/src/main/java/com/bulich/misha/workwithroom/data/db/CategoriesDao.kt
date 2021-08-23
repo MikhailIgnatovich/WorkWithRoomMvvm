@@ -1,7 +1,8 @@
-package com.bulich.misha.workwithroom.db
+package com.bulich.misha.workwithroom.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.bulich.misha.workwithroom.data.models.Categories
 
 @Dao
 interface CategoriesDao {

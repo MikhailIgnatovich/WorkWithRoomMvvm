@@ -1,10 +1,10 @@
-package com.bulich.misha.workwithroom.tabs.products
+package com.bulich.misha.workwithroom.presentation.tabs.products
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bulich.misha.workwithroom.db.Products
-import com.bulich.misha.workwithroom.db.ProductsRepository
+import com.bulich.misha.workwithroom.data.models.Products
+import com.bulich.misha.workwithroom.data.repository.ProductsRepository
 import kotlinx.coroutines.launch
 
 class ProductsViewModel(private val productsRepository: ProductsRepository) : ViewModel() {

@@ -1,4 +1,4 @@
-package com.bulich.misha.workwithroom.tabs
+package com.bulich.misha.workwithroom.presentation.tabs
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -11,13 +11,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bulich.misha.workwithroom.R
 import com.bulich.misha.workwithroom.databinding.PanelBinding
-import com.bulich.misha.workwithroom.db.CategoriesRepository
-import com.bulich.misha.workwithroom.db.ProductsDatabase
-import com.bulich.misha.workwithroom.db.ProductsRepository
-import com.bulich.misha.workwithroom.tabs.categories.CategoriesViewModel
-import com.bulich.misha.workwithroom.tabs.categories.CategoriesViewModelFactory
-import com.bulich.misha.workwithroom.tabs.products.ProductsViewModel
-import com.bulich.misha.workwithroom.tabs.products.ProductsViewModelFactory
+import com.bulich.misha.workwithroom.data.repository.CategoriesRepository
+import com.bulich.misha.workwithroom.data.db.ProductsDatabase
+import com.bulich.misha.workwithroom.data.repository.ProductsRepository
+import com.bulich.misha.workwithroom.presentation.tabs.categories.CategoriesViewModel
+import com.bulich.misha.workwithroom.presentation.tabs.categories.CategoriesViewModelFactory
+import com.bulich.misha.workwithroom.presentation.tabs.products.ProductsViewModel
+import com.bulich.misha.workwithroom.presentation.tabs.products.ProductsViewModelFactory
 
 
 class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {

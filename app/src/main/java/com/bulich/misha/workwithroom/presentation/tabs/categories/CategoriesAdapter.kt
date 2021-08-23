@@ -1,4 +1,4 @@
-package com.bulich.misha.workwithroom.tabs.categories
+package com.bulich.misha.workwithroom.presentation.tabs.categories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bulich.misha.workwithroom.R
 import com.bulich.misha.workwithroom.databinding.CategoryItemBinding
-import com.bulich.misha.workwithroom.db.Categories
+import com.bulich.misha.workwithroom.data.models.Categories
 
 class CategoriesAdapter(
     private val deleteCategory: (Categories) -> Unit,

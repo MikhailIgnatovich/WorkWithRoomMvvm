@@ -1,8 +1,7 @@
-package com.bulich.misha.workwithroom.tabs.categories
+package com.bulich.misha.workwithroom.presentation.tabs.categories
 
 import android.os.Bundle
 import android.view.KeyEvent
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bulich.misha.workwithroom.R
 import com.bulich.misha.workwithroom.databinding.PanelEditCategoryBinding
-import com.bulich.misha.workwithroom.db.CategoriesRepository
-import com.bulich.misha.workwithroom.db.ProductsDatabase
+import com.bulich.misha.workwithroom.data.repository.CategoriesRepository
+import com.bulich.misha.workwithroom.data.db.ProductsDatabase
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 

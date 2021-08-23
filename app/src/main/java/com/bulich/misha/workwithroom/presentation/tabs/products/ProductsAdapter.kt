@@ -1,4 +1,4 @@
-package com.bulich.misha.workwithroom.tabs.products
+package com.bulich.misha.workwithroom.presentation.tabs.products
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bulich.misha.workwithroom.R
 import com.bulich.misha.workwithroom.databinding.ProductsItemBinding
-import com.bulich.misha.workwithroom.db.Products
+import com.bulich.misha.workwithroom.data.models.Products
 
 class ProductsAdapter(
     private val deleteProduct: (Products) -> Unit,

@@ -1,4 +1,4 @@
-package com.bulich.misha.workwithroom.tabs.categories
+package com.bulich.misha.workwithroom.presentation.tabs.categories
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bulich.misha.workwithroom.R
 import com.bulich.misha.workwithroom.databinding.CatalogCategoriesBinding
-import com.bulich.misha.workwithroom.db.Categories
-import com.bulich.misha.workwithroom.db.CategoriesRepository
-import com.bulich.misha.workwithroom.db.ProductsDatabase
+import com.bulich.misha.workwithroom.data.models.Categories
+import com.bulich.misha.workwithroom.data.repository.CategoriesRepository
+import com.bulich.misha.workwithroom.data.db.ProductsDatabase
 
 class CatalogCategories : Fragment(), View.OnClickListener {
 
