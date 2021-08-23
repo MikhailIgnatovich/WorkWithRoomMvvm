@@ -1,25 +1,31 @@
 package com.bulich.misha.workwithroom.data.repository
 
+import androidx.lifecycle.LiveData
 import com.bulich.misha.workwithroom.data.db.CategoriesDao
 import com.bulich.misha.workwithroom.data.models.Categories
+import com.bulich.misha.workwithroom.domain.repository.CategoriesCall
 
-class CategoriesRepository(private val categoriesDao: CategoriesDao) {
+class CategoriesRepository(private val categoriesDao: CategoriesDao) : CategoriesCall {
 
-    val categories = categoriesDao.getAllCategories()
+    override fun loadCategories(): LiveData<List<Categories>> {
+        return categoriesDao.getAllCategories()
+    }
 
-    suspend fun insertCategory(categories: Categories) {
+    override suspend fun insertCategory(categories: Categories) {
         categoriesDao.insertCategory(categories)
     }
 
-    suspend fun updateCategory(categories: Categories) {
+    override suspend fun updateCategory(categories: Categories) {
         categoriesDao.updateCategory(categories)
     }
 
-    suspend fun deleteCategory(categories: Categories) {
+    override suspend fun deleteCategory(categories: Categories) {
         categoriesDao.deleteCategory(categories)
     }
 
-    suspend fun deleteAllCategories() {
+    override suspend fun deleteAllCategories() {
         categoriesDao.deleteAllCategories()
     }
+
+
 }
