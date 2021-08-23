@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".tabs.Panel">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headerAddCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/addCategory"
+                android:textColor="@color/orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAddCategoryClothes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/orange"
+                android:text="@string/catalog_clothes"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/headerAddCategory" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAddCategoryShoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/orange"
+                android:text="@string/shoes"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/buttonAddCategoryClothes" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAddCategoryAccessories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/orange"
+                android:text="@string/accessories"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/buttonAddCategoryShoes" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headerAddProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/addProduct"
+                android:textColor="@color/orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonAddCategoryAccessories" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sectionEnterNameProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/labelEnterNameProduct"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/background"
+                app:boxStrokeColor="@color/white"
+                app:boxStrokeWidthFocused="4dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@android:color/holo_red_light"
+                app:hintTextColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/headerAddProduct"
+                app:startIconDrawable="@drawable/catalog_categories"
+                app:startIconTint="@android:color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/enterNameProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@drawable/cursor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sectionEnterCategoryProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/labelEnterNumberCategory"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/background"
+                app:boxStrokeColor="@color/white"
+                app:boxStrokeWidthFocused="4dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@android:color/holo_red_light"
+                app:hintTextColor="@android:color/white"
+                app:layout_constraintTop_toBottomOf="@id/sectionEnterNameProduct"
+                app:startIconDrawable="@drawable/catalog_products"
+                app:startIconTint="@android:color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/enterCategoryProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sectionEnterPriceProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/labelEnterPriceProduct"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/background"
+                app:boxStrokeColor="@color/white"
+                app:boxStrokeWidthFocused="4dp"
+                app:endIconMode="clear_text"
+                app:endIconTint="@android:color/holo_red_light"
+                app:hintTextColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/sectionEnterCategoryProduct"
+                app:startIconDrawable="@drawable/price"
+                app:startIconTint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/enterPriceProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/sectionResEnterProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@id/sectionEnterPriceProduct">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/resEnterNameProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/orange" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/resEnterCategoryProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/orange" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/resEnterPriceProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/orange" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAddProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/orange"
+                android:text="@string/addProduct"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/sectionResEnterProduct" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".tabs.categories.PanelEditCategory">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/orange"
+            android:paddingBottom="70dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headerEditCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:text="@string/editCategory"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sectionEditCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/headerEditCategory"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="10dp"
+                app:boxBackgroundColor="@color/background"
+                app:boxStrokeColor="@color/white"
+                app:startIconTint="@color/white"
+                app:endIconTint="@android:color/holo_red_light"
+                android:hint="@string/labelEnterCategory"
+                android:textColorHint="@color/white"
+                app:hintTextColor="@color/white"
+                app:startIconDrawable="@drawable/catalog_categories"
+                app:boxStrokeWidthFocused="4dp"
+                app:endIconMode="clear_text">
+                
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@drawable/cursor"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+</layout>
