@@ -11,23 +11,23 @@ import com.bulich.misha.workwithroom.data.models.Products
 abstract class ProductsDatabase: RoomDatabase() {
 
     abstract fun categoriesDao(): CategoriesDao
-    abstract fun products(): ProductsDao
+    abstract fun productsDao(): ProductsDao
 
-    companion object {
-        @Volatile
-        private var INSTANCE: ProductsDatabase? = null
-        fun getInstance(context: Context): ProductsDatabase {
-            synchronized(this) {
-                var instance = INSTANCE
-                if (instance == null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        ProductsDatabase::class.java,
-                        "database"
-                    ).build()
-                }
-                return instance
-            }
-        }
-    }
+//    companion object {
+//        @Volatile
+//        private var INSTANCE: ProductsDatabase? = null
+//        fun getInstance(context: Context): ProductsDatabase {
+//            synchronized(this) {
+//                var instance = INSTANCE
+//                if (instance == null) {
+//                    instance = Room.databaseBuilder(
+//                        context.applicationContext,
+//                        ProductsDatabase::class.java,
+//                        "database"
+//                    ).build()
+//                }
+//                return instance
+//            }
+//        }
+//    }
 }
