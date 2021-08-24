@@ -15,14 +15,13 @@ import com.bulich.misha.workwithroom.databinding.CatalogProductsBinding
 import com.bulich.misha.workwithroom.data.models.Products
 import com.bulich.misha.workwithroom.data.db.ProductsDatabase
 import com.bulich.misha.workwithroom.data.repository.ProductsRepository
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CatalogProducts : Fragment(), View.OnClickListener {
 
     private var binding: CatalogProductsBinding? = null
-    private var productsRepository: ProductsRepository? = null
-    private var productsViewModel: ProductsViewModel? = null
-    private var productsViewModelFactory: ProductsViewModelFactory? = null
+    val productsViewModel: ProductsViewModel by viewModel()
     private var productsAdapter: ProductsAdapter? = null
 
 
@@ -32,12 +31,7 @@ class CatalogProducts : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.catalog_products, container, false)
-        val productsDao =
-            ProductsDatabase.getInstance((context as FragmentActivity).application).products()
-        productsRepository = ProductsRepository(productsDao)
-        productsViewModelFactory = ProductsViewModelFactory(productsRepository!!)
-        productsViewModel =
-            ViewModelProvider(this, productsViewModelFactory!!).get(ProductsViewModel::class.java)
+
         initRecyclerProducts()
 
         binding?.deleteAllProducts?.setOnClickListener(this)
@@ -55,7 +49,7 @@ class CatalogProducts : Fragment(), View.OnClickListener {
     }
 
     private fun displayProduct() {
-        productsViewModel?.products?.observe(viewLifecycleOwner, Observer {
+        productsViewModel.products.observe(viewLifecycleOwner, Observer {
             productsAdapter?.setList(it)
             productsAdapter?.notifyDataSetChanged()
         })
@@ -76,10 +70,10 @@ class CatalogProducts : Fragment(), View.OnClickListener {
     }
 
     private fun deleteProduct(products: Products) {
-        productsViewModel?.deleteProduct(products)
+        productsViewModel.deleteProduct(products)
     }
 
     override fun onClick(v: View?) {
-        productsViewModel?.deleteAllProducts()
+        productsViewModel.deleteAllProducts()
     }
 }

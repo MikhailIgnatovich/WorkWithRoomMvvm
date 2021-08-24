@@ -13,14 +13,13 @@ import com.bulich.misha.workwithroom.databinding.PanelEditProductBinding
 import com.bulich.misha.workwithroom.data.db.ProductsDatabase
 import com.bulich.misha.workwithroom.data.repository.ProductsRepository
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class PanelEditProduct : BottomSheetDialogFragment(), View.OnClickListener, View.OnKeyListener {
 
     private var binding: PanelEditProductBinding? = null
-    private var productRepository: ProductsRepository? = null
-    private var productsViewModel: ProductsViewModel? = null
-    private var productsViewModelFactory: ProductsViewModelFactory? = null
+    val productsViewModel: ProductsViewModel by viewModel()
     private var idProduct: Int? = null
 
     override fun onCreateView(
@@ -35,13 +34,6 @@ class PanelEditProduct : BottomSheetDialogFragment(), View.OnClickListener, View
         binding?.editCategoryProduct?.setText(arguments?.getString("categoryProduct"))
         binding?.editPriceProduct?.setText(arguments?.getString("priceProduct"))
 
-        val productDao =
-            ProductsDatabase.getInstance((context as FragmentActivity).application).products()
-        productRepository = ProductsRepository(productDao)
-        productsViewModelFactory = ProductsViewModelFactory(productRepository!!)
-        productsViewModel =
-            ViewModelProvider(this, productsViewModelFactory!!).get(ProductsViewModel::class.java)
-
         binding?.buttonEditProduct?.setOnClickListener(this)
 
         binding?.editNameProduct?.setOnKeyListener(this)
@@ -54,7 +46,7 @@ class PanelEditProduct : BottomSheetDialogFragment(), View.OnClickListener, View
     }
 
     override fun onClick(v: View?) {
-        productsViewModel?.startUpdateProduct(
+        productsViewModel.startUpdateProduct(
             idProduct.toString().toInt(),
             binding?.resEditNameProduct?.text.toString(),
             binding?.resEditCategoryProduct?.text.toString(),

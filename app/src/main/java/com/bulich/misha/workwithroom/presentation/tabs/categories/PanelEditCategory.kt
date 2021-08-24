@@ -13,13 +13,13 @@ import com.bulich.misha.workwithroom.databinding.PanelEditCategoryBinding
 import com.bulich.misha.workwithroom.data.repository.CategoriesRepository
 import com.bulich.misha.workwithroom.data.db.ProductsDatabase
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class PanelEditCategory : BottomSheetDialogFragment(), View.OnKeyListener {
 
     private var binding: PanelEditCategoryBinding? = null
-    private var categoriesRepository: CategoriesRepository? = null
-    private var categoriesViewModel: CategoriesViewModel? = null
+    val categoriesViewModel: CategoriesViewModel by viewModel()
     private var idCategory: Int? = null
 
     override fun onCreateView(
@@ -28,11 +28,7 @@ class PanelEditCategory : BottomSheetDialogFragment(), View.OnKeyListener {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.panel_edit_category, container, false)
-        val categoriesDao =
-            ProductsDatabase.getInstance((context as FragmentActivity).application).categoriesDao()
-        categoriesRepository = CategoriesRepository(categoriesDao)
-        val factory = CategoriesViewModelFactory(categoriesRepository!!)
-        categoriesViewModel = ViewModelProvider(this, factory).get(CategoriesViewModel::class.java)
+
 
         binding?.editCategory?.setOnKeyListener(this)
         return binding?.root
@@ -43,7 +39,7 @@ class PanelEditCategory : BottomSheetDialogFragment(), View.OnKeyListener {
             R.id.editCategory -> {
                 if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
 
-                    categoriesViewModel?.startUpdate(
+                    categoriesViewModel.startUpdate(
                         idCategory.toString().toInt(),
                         binding?.editCategory?.text?.toString()!!
                     )

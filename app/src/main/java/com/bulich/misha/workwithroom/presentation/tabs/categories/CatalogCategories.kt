@@ -15,13 +15,13 @@ import com.bulich.misha.workwithroom.databinding.CatalogCategoriesBinding
 import com.bulich.misha.workwithroom.data.models.Categories
 import com.bulich.misha.workwithroom.data.repository.CategoriesRepository
 import com.bulich.misha.workwithroom.data.db.ProductsDatabase
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CatalogCategories : Fragment(), View.OnClickListener {
 
     private var binding: CatalogCategoriesBinding? = null
-    private var categoriesRepository: CategoriesRepository? = null
-    private var categoriesViewModel: CategoriesViewModel? = null
-    private var categoriesViewModelFactory: CategoriesViewModelFactory? = null
+    val categoriesViewModel: CategoriesViewModel by viewModel()
+
     private var categoriesAdapter: CategoriesAdapter? = null
 
     override fun onCreateView(
@@ -30,14 +30,7 @@ class CatalogCategories : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.catalog_categories, container, false)
-        val categoriesDao =
-            ProductsDatabase.getInstance((context as FragmentActivity).application).categoriesDao()
-        categoriesRepository = CategoriesRepository(categoriesDao)
-        categoriesViewModelFactory = CategoriesViewModelFactory(categoriesRepository!!)
-        categoriesViewModel = ViewModelProvider(
-            this,
-            categoriesViewModelFactory!!
-        ).get(CategoriesViewModel::class.java)
+
         initRecyclerCategories()
 
         binding?.deleteAllCategories?.setOnClickListener(this)
@@ -71,13 +64,13 @@ class CatalogCategories : Fragment(), View.OnClickListener {
     }
 
     private fun displayList() {
-        categoriesViewModel?.categories?.observe(viewLifecycleOwner, Observer {
+        categoriesViewModel.categories.observe(viewLifecycleOwner, Observer {
             categoriesAdapter?.setList(it)
             categoriesAdapter?.notifyDataSetChanged()
         })
     }
 
     override fun onClick(v: View?) {
-        categoriesViewModel?.deleteAllCategories()
+        categoriesViewModel.deleteAllCategories()
     }
 }

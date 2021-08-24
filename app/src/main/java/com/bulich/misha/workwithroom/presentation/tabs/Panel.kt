@@ -7,28 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bulich.misha.workwithroom.R
 import com.bulich.misha.workwithroom.databinding.PanelBinding
-import com.bulich.misha.workwithroom.data.repository.CategoriesRepository
-import com.bulich.misha.workwithroom.data.db.ProductsDatabase
-import com.bulich.misha.workwithroom.data.repository.ProductsRepository
 import com.bulich.misha.workwithroom.presentation.tabs.categories.CategoriesViewModel
-import com.bulich.misha.workwithroom.presentation.tabs.categories.CategoriesViewModelFactory
 import com.bulich.misha.workwithroom.presentation.tabs.products.ProductsViewModel
-import com.bulich.misha.workwithroom.presentation.tabs.products.ProductsViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {
 
     private var binding: PanelBinding? = null
 
-    private var categoriesRepository: CategoriesRepository? = null
-    private var categoriesViewModel: CategoriesViewModel? = null
-
-    private var productsRepository: ProductsRepository? = null
-    private var productsViewModel: ProductsViewModel? = null
+    val categoriesViewModel: CategoriesViewModel by viewModel()
+    val productsViewModel: ProductsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,19 +28,6 @@ class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.panel, container, false)
 
-        val categoriesDao =
-            ProductsDatabase.getInstance((context as FragmentActivity).application).categoriesDao()
-        categoriesRepository = CategoriesRepository(categoriesDao)
-        val factoryCategories = CategoriesViewModelFactory(categoriesRepository!!)
-        categoriesViewModel =
-            ViewModelProvider(this, factoryCategories).get(CategoriesViewModel::class.java)
-
-        val productsDao =
-            ProductsDatabase.getInstance((context as FragmentActivity).application).products()
-        productsRepository = ProductsRepository(productsDao)
-        val factoryProducts = ProductsViewModelFactory(productsRepository!!)
-        productsViewModel =
-            ViewModelProvider(this, factoryProducts).get(ProductsViewModel::class.java)
 
         binding?.enterCategoryProduct?.setOnKeyListener(this)
         binding?.enterNameProduct?.setOnKeyListener(this)
@@ -97,19 +75,19 @@ class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {
         when (v.id) {
 
             R.id.buttonAddCategoryClothes -> {
-                categoriesViewModel?.startInsert(binding?.buttonAddCategoryClothes?.text?.toString()!!)
+                categoriesViewModel.startInsert(binding?.buttonAddCategoryClothes?.text?.toString()!!)
             }
 
             R.id.buttonAddCategoryShoes -> {
-                categoriesViewModel?.startInsert(binding?.buttonAddCategoryShoes?.text?.toString()!!)
+                categoriesViewModel.startInsert(binding?.buttonAddCategoryShoes?.text?.toString()!!)
             }
 
             R.id.buttonAddCategoryAccessories -> {
-                categoriesViewModel?.startInsert(binding?.buttonAddCategoryAccessories?.text?.toString()!!)
+                categoriesViewModel.startInsert(binding?.buttonAddCategoryAccessories?.text?.toString()!!)
             }
 
             R.id.buttonAddProduct -> {
-                productsViewModel?.startInsert(
+                productsViewModel.startInsert(
                     binding?.resEnterNameProduct?.text?.toString()!!,
                     binding?.resEnterCategoryProduct?.text?.toString()!!,
                     binding?.resEnterPriceProduct?.text?.toString()!!
